@@ -1,4 +1,6 @@
-
+.container{
+  background-image: url(assets/image/lion.jpg);
+}
 .jumbotron{
   text-align: right;
   margin-top: 20px;
@@ -25,3 +27,4 @@
 #kingdomButtons{
   padding: 10px 0 10px 150px;
 }
+
