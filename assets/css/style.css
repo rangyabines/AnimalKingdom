@@ -64,10 +64,17 @@
 #circleOfLife{
   text-transform: uppercase;
 }
-.jungle{
+.jungle {
+  float:  left;
+  left: 0;
   width : 200px;
   height : 200px;
   margin: 20px;
-  display:block;
+ /* display:block;*/
+}
+.favAnimal{
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  margin: 10px;
+  padding: 10px;
 }
 

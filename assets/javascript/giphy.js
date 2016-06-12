@@ -54,14 +54,14 @@ $( document ).ready(function() {
   renderButtons();
 
   $('.jungle').on('click', function() {
-  var event = $(this).attr('data-state'); 
+  var event = $(this).attr('data-animal'); 
   if ( event == 'still'){
       $(this).attr('src', $(this).data('animate'));
-      $(this).attr('data-state', 'animate');
+      $(this).attr('data-animal', 'animate');
     }
   else {
       $(this).attr('src', $(this).data('still'));
-      $(this).attr('data-state', 'still');
+      $(this).attr('data-animal', 'still');
     }
   });
     
