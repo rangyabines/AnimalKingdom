@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home Pets</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,900' rel='stylesheet' type='text/css'> 
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> 
+  <!-- <link rel="stylesheet" type="text/css" href="assets/style.css"> -->
+</head>
+<body>
+
+<style type="text/css">
+  .jumbotron{
+    text-align: right;
+    margin-top: 20px;
+    background: url("images/kingdom.jpg") no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: cover;
+    height: 400px;
+    color: white;
+  }
+  #jumbo{
+    border: 2px solid red;
+    margin: 0 50px 0 0;
+    padding: 20px;
+    text-shadow: 2px 2px 1px gray;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+  }
+  #search{
+    margin: 50px auto;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+  }
+  #addAnimal{
+    height: 40px;
+    width: 20%;
+  }
+
+</style>
+
+
+  <div class="container">
+    <div class="jumbotron"><h1><span id="jumbo">Animal Kingdom<span></h1></div>
+
+    <div id='kingdomButtons'></div>
+
+    <form id='search'>
+      <label for="addAnimal">Add to Kingdom</label>
+      <input type="text" name="search" id='addAnimal'>
+      <input type="submit" id='addsubmit' value='Submit' class='btn btn-danger'>
+    </form>
+    
+
+    <div id='circleOfLife' ></div>
+  </div>
+
+  <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+  <script type="text/javascript">
+  
+  var kingdom= ['Lion','Giraffe','Zebra','Elephant','Tiger'];
+    $('#addsubmit').on('click', function(){
+    var animals = $('#addAnimal').val().trim();
+    $('#kingdomButtons').append('<button>');
+    return false;
+  });
+
+  $(document).on('click','button', function() {
+      var animal = $(this).data('animal');
+      var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=10";
+      $.ajax({
+              url: queryURL,
+              method: 'GET'
+          })
+          .done(function(response) {
+            
+              console.log(response)
+              var results=response.data
+              for (var i = 0; i < results.length; i++) {
+                  var animalDiv =$('<div>');
+                  var p =$('<p>');
+                  p.text(results[i].rating);
+                  var animalImage =$('<img>'); 
+                  animalImage.attr('src',results[i].images.fixed_height.url);
+                  animalImage.addClass('jungle') 
+                  animalDiv.append(p); 
+                  animalDiv.append(animalImage); 
+                  $('#circleOfLife').prepend(animalDiv);
+                  }            
+          });
+    });
+
+    $('#addsubmit').on('click', function(){
+    var animal = $('#addAnimal').val().trim();
+    kingdom.push(animal);
+    appendNewButton(animal);
+    
+    renderButtons();
+    return false;
+    })
+
+    function renderButtons(){ 
+    $('#kingdomButtons').empty();
+    for (var i = 0; i < kingdom.length; i++){ 
+        var t = $('<button>') 
+        t.addClass('favAnimal'); 
+        t.attr('data-animal', kingdom[i]); 
+        t.text(kingdom[i]); 
+        $('#kingdomButtons').append(t);
+    }
+  }
+  renderButtons();
+
+  $('.jungle').on('click', function() {
+  var event = $(this).attr('data-state'); 
+  if ( event == 'still'){
+      $(this).attr('src', $(this).data('animate'));
+      $(this).attr('data-state', 'animate');
+    }
+  else {
+      $(this).attr('src', $(this).data('still'));
+      $(this).attr('data-state', 'still');
+    }
+  });
+  </script>
+
+</body>
+</html>
