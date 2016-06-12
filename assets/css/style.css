@@ -61,4 +61,13 @@
 #kingdomButtons{
   padding: 10px 0 10px 150px;
 }
+#circleOfLife{
+  text-transform: uppercase;
+}
+.jungle{
+  width : 200px;
+  height : 200px;
+  margin: 20px;
+  display:block;
+}
 
