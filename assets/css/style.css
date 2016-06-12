@@ -1,0 +1,27 @@
+
+.jumbotron{
+  text-align: right;
+  margin-top: 20px;
+  color: #ffffff;
+  background: white;
+}
+#jumbo{
+  margin: 0 50px 0 0;
+  padding: 20px;
+  text-shadow: 5px 5px 1px gray;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+}
+#search{
+  margin: 50px auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+#addAnimal{
+  height: 40px;
+  width: 20%;
+}
+#kingdomButtons{
+  padding: 10px 0 10px 150px;
+}
