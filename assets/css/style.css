@@ -70,12 +70,18 @@
   width : 200px;
   height : 200px;
   margin: 20px;
- /* display:block;*/
 }
 .favAnimal{
   font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
   margin: 5px;
   padding: 10px;
   background-color: white;
+}
+p{
+  float:  left;
+  left: 0;
+  width : 10px;
+  height : 10px;
+  margin: 20px;
 }
 
